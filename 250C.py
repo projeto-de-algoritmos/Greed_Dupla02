@@ -1,37 +1,51 @@
-# Deu tle e ainda tá meio gambiarra. Vou tentar arrumar depois.
+def findMininumStress (newMovies, k):
+    stress = 0
 
-def findMininumStress (n, k, movies, stress):
-    for i in range(k):
-        j = 0
-        while j < n:
-            if movies[j] != i + 1:
-                t = j + 1
-                if t < n:
-                    while t < n and (movies[t] == i + 1):
-                        t = t + 1            
-                    if t < n and movies[j] != movies[t]:
-                        stress[i] = stress[i] + 1
-                j = t
-            else:
-                j = j + 1
-            
-    minimumValue = 1000000
+    for i in range(len(newMovies)):
+        if i < len(newMovies) - 1:
+            if newMovies[i] != newMovies[i + 1]:
+                stress = stress + 1
+
+    fewerStresses = [stress] * k
+    minimumValue = stress
     minimumPosition = 0
+
+    for i in range(len(newMovies)):
+        if i > 0 and i < len(newMovies) - 1:
+            if newMovies[i - 1] != newMovies[i + 1]:
+                fewerStresses[newMovies[i] - 1] = fewerStresses[newMovies[i] - 1] - 1
+            else:
+                fewerStresses[newMovies[i] - 1] = fewerStresses[newMovies[i] - 1] - 2
+        else:
+            fewerStresses[newMovies[i] - 1] = fewerStresses[newMovies[i] - 1] - 1
+
     for i in range(k):
-        if(stress[i] < minimumValue):
-            minimumValue = stress[i]
+        if fewerStresses[i] < minimumValue:
+            minimumValue =  fewerStresses[i]
             minimumPosition = i + 1
+            
     print(minimumPosition)
+
+def excludeConsecutiveRepetitions(n, movies, newMovies):
+    for i in range(n):
+        if i < n - 2:
+            if movies[i] != movies[i + 1]:
+                newMovies.append(movies[i])
+        elif i == n - 2:
+            if movies[i] != movies[i+1]:
+                newMovies.append(movies[i])
+                newMovies.append(movies[i + 1])
+            else:
+                newMovies.append(movies[i])
 
 
 if __name__ == '__main__':
     n, k = map(int, input().split())
     movies = list(map(int, input().split()))
 
-    stress = [0] * k
+    newMovies = []
 
-    findMininumStress(n, k, movies, stress)
+    excludeConsecutiveRepetitions(n, movies, newMovies)
 
-
-
+    findMininumStress (newMovies, k)
  
