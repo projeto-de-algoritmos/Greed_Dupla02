@@ -13,11 +13,11 @@
 Este projeto visa solucionar 3 problemas de algoritomos ambiciosos do juiz online CodeForces.
 Os problemas são:
 
-* [Movie Critics](https://codeforces.com/problemset/problem/250/C)
+* [250C - Movie Critics](https://codeforces.com/problemset/problem/250/C)
 
-* [BerSU Ball](https://codeforces.com/problemset/problem/489/B)
+* [489B - BerSU Ball](https://codeforces.com/problemset/problem/489/B)
 
-* [Young Explorers](https://codeforces.com/problemset/problem/1355/B)
+* [1355B - Young Explorers](https://codeforces.com/problemset/problem/1355/B)
 
 
 ## Screenshots
